@@ -15,6 +15,7 @@
 		BD7DB83827268FEA007C8624 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB83727268FEA007C8624 /* MainViewController.swift */; };
 		BD7DB83C27269F33007C8624 /* PlantsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */; };
 		BD7DB83F2726A56E007C8624 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB83E2726A56E007C8624 /* Plant.swift */; };
+		BD7DB8422726DC7E007C8624 /* PlantsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */; };
 		BF7387CCC555CC785444D620 /* Pods_PlantDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1AEA4AC30FC59F97D287D42 /* Pods_PlantDiary.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		BD7DB83727268FEA007C8624 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCollectionViewCell.swift; sourceTree = "<group>"; };
 		BD7DB83E2726A56E007C8624 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCollectionViewModel.swift; sourceTree = "<group>"; };
 		C0CBCA30209E465DADB77A03 /* Pods-PlantDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantDiary.release.xcconfig"; path = "Target Support Files/Pods-PlantDiary/Pods-PlantDiary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,8 +93,9 @@
 				BD7DB8182726708A007C8624 /* Assets.xcassets */,
 				BD7DB81A2726708A007C8624 /* LaunchScreen.storyboard */,
 				BD7DB81D2726708A007C8624 /* Info.plist */,
-				BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */,
 				BD7DB83E2726A56E007C8624 /* Plant.swift */,
+				BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */,
+				BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */,
 			);
 			path = PlantDiary;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				BD7DB81027267088007C8624 /* AppDelegate.swift in Sources */,
 				BD7DB81227267088007C8624 /* SceneDelegate.swift in Sources */,
+				BD7DB8422726DC7E007C8624 /* PlantsCollectionViewModel.swift in Sources */,
 				BD7DB83F2726A56E007C8624 /* Plant.swift in Sources */,
 				BD7DB83C27269F33007C8624 /* PlantsCollectionViewCell.swift in Sources */,
 				BD7DB83827268FEA007C8624 /* MainViewController.swift in Sources */,

@@ -11,9 +11,7 @@ import RxSwift
 import RxCocoa
 
 class MainViewController: UIViewController {
-
-    var plants = BehaviorRelay(value: [Plant(name: "수채화 고무나무"), Plant(name: "여인초"), Plant(name: "고사리"), Plant(name: "팬지")])
-    // @TODO: 더미 데이터 삭제
+    var plants = BehaviorRelay<[Plant]>(value: [])
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -37,6 +35,22 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // @TODO: 더미 데이터 삭제
+        let plant1 = Plant(name: "수채화 고무나무")
+        plant1.lastWaterAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
+        plant1.lastFertilizerAt = Date(timeIntervalSinceNow: -4 * 60 * 60 * 24)
+        plant1.birthAt = Date(timeIntervalSinceNow: -180 * 60 * 60 * 24)
+        let plant2 = Plant(name: "여인초")
+        plant2.lastWaterAt = Date(timeIntervalSinceNow: -3 * 60 * 60 * 24)
+        plant2.birthAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
+        let plant3 = Plant(name: "팬지")
+        plant3.lastWaterAt = Date(timeIntervalSinceNow: -2 * 60 * 60 * 24)
+        plant3.lastFertilizerAt = Date(timeIntervalSinceNow: -14 * 60 * 60 * 24)
+        let plant4 = Plant(name: "금어초")
+        plant4.lastWaterAt = Date(timeIntervalSinceNow: -1 * 60 * 60 * 24)
+        
+        plants.accept([plant1, plant2, plant3, plant4])
 
         self.navigationItem.title = "Plant Diary"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil) // @TODO: add 버튼 연결
@@ -62,7 +76,8 @@ class MainViewController: UIViewController {
         
         self.plants.bind(to: self.plantsCollectionView.rx.items) { (collectionView, row, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlantsCollectionViewCell.identifier, for: IndexPath(row: row, section: 0)) as! PlantsCollectionViewCell
-            cell.plant = item
+            let cellViewModel = PlantsCollectionViewModel(item)
+            cellViewModel.configure(cell)
             return cell
         }.disposed(by:disposeBag)
     }

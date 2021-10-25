@@ -41,16 +41,8 @@ class PlantsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    var plant: Plant? {
-        didSet {
-            bind(plant: plant)
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.thumbImageView.image = UIImage(named: "image_plant_dummy")
         
         self.configure()
         
@@ -81,39 +73,6 @@ class PlantsCollectionViewCell: UICollectionViewCell {
         statusLabel.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(contentView).offset(8)
             make.bottom.lessThanOrEqualTo(thumbImageView)
-        }
-    }
-    
-    private func bind(plant: Plant?) {
-        if let plant = plant {
-            self.nameLabel.text = plant.name
-            
-            if let imageUrl = plant.imageUrl {
-                // @TODO: image set
-            }
-            
-            let attributedString = NSMutableAttributedString()
-            
-            let waterImage = NSTextAttachment()
-            waterImage.image = UIImage(named: "icon_water")
-            waterImage.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
-            
-            let waterString = NSMutableAttributedString(attachment: waterImage)
-            waterString.append(NSAttributedString(string: " + 4"))
-            
-            attributedString.append(waterString)
-            attributedString.append(NSAttributedString(string: "\n"))
-            
-            let fertImage = NSTextAttachment()
-            fertImage.image = UIImage(named: "icon_fertilizer")
-            fertImage.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
-            
-            let fertString = NSMutableAttributedString(attachment: fertImage)
-            fertString.append(NSAttributedString(string: " + 4"))
-            
-            attributedString.append(fertString)
-            
-            self.statusLabel.attributedText = attributedString
         }
     }
 }
