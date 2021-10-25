@@ -14,7 +14,11 @@ class PlantsCollectionViewCell: UICollectionViewCell {
     static let identifier = "PlantsCollectionViewCell"
     
     var thumImageView = UIImageView()
-    var nameLabel = UILabel()
+    var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
     
     var plant: Plant? {
         didSet {
@@ -41,12 +45,11 @@ class PlantsCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(nameLabel)
         
         thumImageView.snp.makeConstraints { (make) in
-            make.width.equalTo(contentView)
-            make.height.equalTo(contentView)
-            make.center.equalTo(contentView)
+            make.width.centerX.top.equalTo(contentView)
+            make.bottom.equalTo(nameLabel.snp.top)
         }
         nameLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(contentView)
+            make.bottom.width.centerX.equalTo(contentView)
         }
     }
     
