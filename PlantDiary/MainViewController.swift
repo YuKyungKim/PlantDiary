@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "plantsCollectionViewCell")
+        collectionView.register(PlantsCollectionViewCell.self, forCellWithReuseIdentifier: PlantsCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -71,8 +71,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantsCollectionViewCell", for: indexPath)
-        cell.backgroundColor = .black
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlantsCollectionViewCell.identifier, for: indexPath) as! PlantsCollectionViewCell
+        
         return cell
     }
     
