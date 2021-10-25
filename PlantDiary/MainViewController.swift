@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
         plants.accept([plant1, plant2, plant3, plant4])
 
         self.navigationItem.title = "Plant Diary"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil) // @TODO: add 버튼 연결
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onClickAdd))
         
         self.setView()
         
@@ -86,6 +86,10 @@ class MainViewController: UIViewController {
         }.disposed(by:disposeBag)
     }
     
+    @objc func onClickAdd() {
+        let plantAddVC = PlantAddViewController()
+        self.navigationController?.pushViewController(plantAddVC, animated: true)
+    }
 
     /*
     // MARK: - Navigation
