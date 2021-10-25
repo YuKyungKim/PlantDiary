@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,12 @@
 		BD7DB81727267088007C8624 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7DB81527267088007C8624 /* Main.storyboard */; };
 		BD7DB8192726708A007C8624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD7DB8182726708A007C8624 /* Assets.xcassets */; };
 		BD7DB81C2726708A007C8624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7DB81A2726708A007C8624 /* LaunchScreen.storyboard */; };
+		BF7387CCC555CC785444D620 /* Pods_PlantDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1AEA4AC30FC59F97D287D42 /* Pods_PlantDiary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9CA5FADFB672306964604F40 /* Pods-PlantDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantDiary.debug.xcconfig"; path = "Target Support Files/Pods-PlantDiary/Pods-PlantDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		A1AEA4AC30FC59F97D287D42 /* Pods_PlantDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7DB80C27267088007C8624 /* PlantDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7DB80F27267088007C8624 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD7DB81127267088007C8624 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		BD7DB8182726708A007C8624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD7DB81B2726708A007C8624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD7DB81D2726708A007C8624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0CBCA30209E465DADB77A03 /* Pods-PlantDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantDiary.release.xcconfig"; path = "Target Support Files/Pods-PlantDiary/Pods-PlantDiary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF7387CCC555CC785444D620 /* Pods_PlantDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		017F5D30FDE4FA7F7E719086 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CA5FADFB672306964604F40 /* Pods-PlantDiary.debug.xcconfig */,
+				C0CBCA30209E465DADB77A03 /* Pods-PlantDiary.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8165DCD01E3347FCFB199396 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1AEA4AC30FC59F97D287D42 /* Pods_PlantDiary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BD7DB80327267087007C8624 = {
 			isa = PBXGroup;
 			children = (
 				BD7DB80E27267088007C8624 /* PlantDiary */,
 				BD7DB80D27267088007C8624 /* Products */,
+				017F5D30FDE4FA7F7E719086 /* Pods */,
+				8165DCD01E3347FCFB199396 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD7DB8202726708A007C8624 /* Build configuration list for PBXNativeTarget "PlantDiary" */;
 			buildPhases = (
+				9900B05DFB4FA5B973D35180 /* [CP] Check Pods Manifest.lock */,
 				BD7DB80827267088007C8624 /* Sources */,
 				BD7DB80927267088007C8624 /* Frameworks */,
 				BD7DB80A27267088007C8624 /* Resources */,
+				705F1A6193C3252494D36AE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +157,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		705F1A6193C3252494D36AE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantDiary/Pods-PlantDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantDiary/Pods-PlantDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantDiary/Pods-PlantDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9900B05DFB4FA5B973D35180 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlantDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD7DB80827267088007C8624 /* Sources */ = {
@@ -216,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -283,6 +351,7 @@
 		};
 		BD7DB8212726708A007C8624 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CA5FADFB672306964604F40 /* Pods-PlantDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +371,7 @@
 		};
 		BD7DB8222726708A007C8624 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0CBCA30209E465DADB77A03 /* Pods-PlantDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
