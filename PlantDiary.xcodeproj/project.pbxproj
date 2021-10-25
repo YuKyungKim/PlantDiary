@@ -88,19 +88,51 @@
 		BD7DB80E27267088007C8624 /* PlantDiary */ = {
 			isa = PBXGroup;
 			children = (
+				BD7DB8492726FFD4007C8624 /* ViewController */,
+				BD7DB84A2726FFE7007C8624 /* View */,
+				BD7DB8482726FFC5007C8624 /* Model */,
+				BD7DB84B2726FFF0007C8624 /* ViewModel */,
 				BD7DB80F27267088007C8624 /* AppDelegate.swift */,
 				BD7DB81127267088007C8624 /* SceneDelegate.swift */,
-				BD7DB83727268FEA007C8624 /* MainViewController.swift */,
 				BD7DB81527267088007C8624 /* Main.storyboard */,
-				BD7DB8182726708A007C8624 /* Assets.xcassets */,
 				BD7DB81A2726708A007C8624 /* LaunchScreen.storyboard */,
+				BD7DB8182726708A007C8624 /* Assets.xcassets */,
 				BD7DB81D2726708A007C8624 /* Info.plist */,
-				BD7DB83E2726A56E007C8624 /* Plant.swift */,
-				BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */,
-				BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */,
-				BD7DB8452726E84C007C8624 /* PlantAddViewController.swift */,
 			);
 			path = PlantDiary;
+			sourceTree = "<group>";
+		};
+		BD7DB8482726FFC5007C8624 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD7DB83E2726A56E007C8624 /* Plant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BD7DB8492726FFD4007C8624 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD7DB83727268FEA007C8624 /* MainViewController.swift */,
+				BD7DB8452726E84C007C8624 /* PlantAddViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BD7DB84A2726FFE7007C8624 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD7DB83B27269F33007C8624 /* PlantsCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD7DB84B2726FFF0007C8624 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
