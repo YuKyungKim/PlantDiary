@@ -1,6 +1,0 @@
-framework module Pods_PlantDiary {
-  umbrella header "Pods-PlantDiary-umbrella.h"
-
-  export *
-  module * { export * }
-}
