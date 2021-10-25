@@ -63,7 +63,7 @@ class PlantsCollectionViewCell: UICollectionViewCell {
             make.left.right.top.bottom.equalTo(contentView)
         }
         dimView.snp.makeConstraints { (make) in
-            make.top.bottom.height.width.equalTo(thumbImageView)
+            make.top.bottom.left.right.equalTo(thumbImageView)
         }
         nameLabel.snp.makeConstraints { (make) in
             make.width.centerX.equalTo(contentView)
@@ -71,7 +71,8 @@ class PlantsCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(20)
         }
         statusLabel.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(contentView).offset(8)
+            make.top.left.equalTo(contentView).offset(8)
+            make.right.equalTo(contentView).offset(-8)
             make.bottom.lessThanOrEqualTo(thumbImageView)
         }
     }
