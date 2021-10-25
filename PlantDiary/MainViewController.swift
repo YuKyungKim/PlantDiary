@@ -7,9 +7,13 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
 
+    let plants = [Plant(name: "수채화 고무나무"), Plant(name: "여인초"), Plant(name: "고사리"), Plant(name: "팬지")] // @TODO: 더미 데이터 삭제
+    
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         return searchBar
@@ -38,17 +42,15 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(self.searchBar)
         self.searchBar.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view)
+            make.width.centerX.equalTo(self.view)
             make.top.equalTo(self.view.safeAreaLayoutGuide)
-            make.centerX.equalTo(self.view)
         }
         
         self.view.addSubview(self.plantsCollectionView)
         self.plantsCollectionView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view)
+            make.width.centerX.equalTo(self.view)
             make.top.equalTo(self.searchBar.snp.bottom)
             make.bottom.equalTo(self.view.snp.bottom)
-            make.centerX.equalTo(self.view)
         }
     }
     
