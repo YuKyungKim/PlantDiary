@@ -55,6 +55,12 @@ class MainViewController: UIViewController {
         self.navigationItem.title = "Plant Diary"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil) // @TODO: add 버튼 연결
         
+        self.setView()
+        
+        self.rxBind()
+    }
+    
+    func setView() {
         self.view.addSubview(self.searchBar)
         self.searchBar.snp.makeConstraints { (make) in
             make.width.centerX.equalTo(self.view)
@@ -67,8 +73,6 @@ class MainViewController: UIViewController {
             make.top.equalTo(self.searchBar.snp.bottom)
             make.bottom.equalTo(self.view.snp.bottom)
         }
-        
-        self.rxBind()
     }
     
     func rxBind() {
