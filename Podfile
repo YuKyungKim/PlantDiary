@@ -9,4 +9,5 @@ target 'PlantDiary' do
 	pod 'RxSwift', '6.2.0'
 	pod 'RxCocoa', '6.2.0'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'RealmSwift'
 end
