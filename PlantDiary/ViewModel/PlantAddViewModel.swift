@@ -12,7 +12,6 @@ import RxCocoa
 class PlantAddViewModel {
     var name = BehaviorRelay<String?>(value: "")
     var birthDay = BehaviorRelay<Date?>(value: nil)
-    var imageUrl = BehaviorRelay<String>(value: "")
     
     var isValidName: Observable<Bool> {
         return self.name.map { (name) -> Bool in

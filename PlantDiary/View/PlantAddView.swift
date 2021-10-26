@@ -82,7 +82,6 @@ class PlantAddView: UIView {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.locale = Locale(identifier: "ko-KR")
-        datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
         return datePicker
     }()
     
@@ -165,14 +164,6 @@ class PlantAddView: UIView {
             make.top.equalTo(self.birthView.snp.bottom).offset(8)
             make.left.right.equalTo(self)
         }
-    }
-    
-    @objc private func handleDatePicker(_ sender: UIDatePicker) {
-        let date = sender.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.locale = Locale(identifier: "ko-KR")
-        self.birthLabel.text = dateFormatter.string(from: date)
     }
     
     func resetBirth() {

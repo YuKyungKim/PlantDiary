@@ -19,6 +19,11 @@ class PlantsCollectionViewModel {
     }
     
     var image: UIImage? {
+        if let fileName = plant.fileName {
+            if let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName) {
+                return UIImage(contentsOfFile: url.path)
+            }
+        }
         return UIImage(named: "image_plant_dummy") // @TODO: 실제 이미지로 변경
     }
     

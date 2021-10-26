@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Plant: NSObject {
-    var name: String
-    var createdAt: Date
-    var imageUrl: String?
-    var birthAt: Date?
-    var lastWaterAt: Date?
-    var lastFertilizerAt: Date?
+class Plant: Object {
+    @Persisted(primaryKey: true) var plantID: String
+    @Persisted var name: String
+    @Persisted var createdAt: Date
+    @Persisted var fileName: String?
+    @Persisted var birthAt: Date?
+    @Persisted var lastWaterAt: Date?
+    @Persisted var lastFertilizerAt: Date?
     
-    required init(name: String) {
+    convenience init(name: String) {
+        self.init()
         self.name = name
         self.createdAt = Date()
+        self.plantID = UUID().uuidString
     }
 }

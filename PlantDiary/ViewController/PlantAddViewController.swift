@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class PlantAddViewController: UIViewController {
 
@@ -43,6 +44,7 @@ class PlantAddViewController: UIViewController {
     func setView() {
         self.view.backgroundColor = .white
         self.view.addSubview(self.plantAddView)
+        self.plantAddView.datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
     }
     
     func rxBind() {
@@ -52,8 +54,18 @@ class PlantAddViewController: UIViewController {
         }
         .disposed(by: disposeBag)
 
-        self.viewModel.isValidName.subscribe { (isValid) in
+        self.viewModel.isValidName.bind { (isValid) in
             self.saveButton.isEnabled = isValid
+        }
+        .disposed(by: disposeBag)
+        
+        self.viewModel.birthDay.bind { (birthDay) in
+            if let date = birthDay {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.locale = Locale(identifier: "ko-KR")
+                self.plantAddView.birthLabel.text = dateFormatter.string(from: date)
+            }
         }
         .disposed(by: disposeBag)
         
@@ -103,20 +115,38 @@ class PlantAddViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    @objc private func handleDatePicker(_ sender: UIDatePicker) {
+        let date = sender.date
+        self.viewModel.birthDay.accept(date)
+    }
+    
     @objc func onClickSave(_ sender: UIButton) {
-        if let image = self.plantAddView.imageView.image, let data = image.pngData() {
+        
+        if let name = self.viewModel.name.value {
+            let plant = Plant(name: name)
+            plant.birthAt = self.viewModel.birthDay.value
             
-            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-                do {
-                    let fileName = "\(Int(Date.timeIntervalSinceReferenceDate)).png"
-                    let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName)
-                    try data.write(to: url, options: .atomic)
-                } catch (let error) {
-                    print("save error - \(error)")
+            if let image = self.plantAddView.imageView.image, let data = image.pngData() {
+                if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+                    do {
+                        let fileName = "\(Int(Date.timeIntervalSinceReferenceDate)).png"
+                        let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName)
+                        try data.write(to: url, options: .atomic)
+                        plant.fileName = fileName
+                    } catch (let error) {
+                        print("save error - \(error)")
+                    }
+                } else {
+                    // @TODO: 권한 요청
                 }
-            } else {
-                // @TODO: 권한 요청
             }
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(plant)
+            }
+            
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
@@ -126,9 +156,6 @@ extension PlantAddViewController: UIImagePickerControllerDelegate, UINavigationC
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             dismiss(animated: true) {
                 self.plantAddView.imageView.image = image
-                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-                let imageUrl = documentsPath + "/" + "\(Date.timeIntervalSinceReferenceDate)"
-                self.viewModel.imageUrl.accept(imageUrl)
             }
         }
     }

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class MainViewController: UIViewController {
     var plants = BehaviorRelay<[Plant]>(value: [])
@@ -37,20 +38,20 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         // @TODO: 더미 데이터 삭제
-        let plant1 = Plant(name: "수채화 고무나무")
-        plant1.lastWaterAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
-        plant1.lastFertilizerAt = Date(timeIntervalSinceNow: -4 * 60 * 60 * 24)
-        plant1.birthAt = Date(timeIntervalSinceNow: -180 * 60 * 60 * 24)
-        let plant2 = Plant(name: "여인초")
-        plant2.lastWaterAt = Date(timeIntervalSinceNow: -3 * 60 * 60 * 24)
-        plant2.birthAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
-        let plant3 = Plant(name: "팬지")
-        plant3.lastWaterAt = Date(timeIntervalSinceNow: -2 * 60 * 60 * 24)
-        plant3.lastFertilizerAt = Date(timeIntervalSinceNow: -14 * 60 * 60 * 24)
-        let plant4 = Plant(name: "금어초")
-        plant4.lastWaterAt = Date(timeIntervalSinceNow: -1 * 60 * 60 * 24)
+//        let plant1 = Plant(name: "수채화 고무나무")
+//        plant1.lastWaterAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
+//        plant1.lastFertilizerAt = Date(timeIntervalSinceNow: -4 * 60 * 60 * 24)
+//        plant1.birthAt = Date(timeIntervalSinceNow: -180 * 60 * 60 * 24)
+//        let plant2 = Plant(name: "여인초")
+//        plant2.lastWaterAt = Date(timeIntervalSinceNow: -3 * 60 * 60 * 24)
+//        plant2.birthAt = Date(timeIntervalSinceNow: -7 * 60 * 60 * 24)
+//        let plant3 = Plant(name: "팬지")
+//        plant3.lastWaterAt = Date(timeIntervalSinceNow: -2 * 60 * 60 * 24)
+//        plant3.lastFertilizerAt = Date(timeIntervalSinceNow: -14 * 60 * 60 * 24)
+//        let plant4 = Plant(name: "금어초")
+//        plant4.lastWaterAt = Date(timeIntervalSinceNow: -1 * 60 * 60 * 24)
         
-        plants.accept([plant1, plant2, plant3, plant4])
+//        plants.accept([plant1, plant2, plant3, plant4])
 
         self.navigationItem.title = "Plant Diary"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onClickAdd))
@@ -58,6 +59,14 @@ class MainViewController: UIViewController {
         self.setView()
         
         self.rxBind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let realm = try! Realm()
+        let savedPlants = Array(realm.objects(Plant.self))
+        self.plants.accept(savedPlants)
     }
     
     func setView() {
