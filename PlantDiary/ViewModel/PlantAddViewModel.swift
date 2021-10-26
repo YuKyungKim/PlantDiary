@@ -27,8 +27,4 @@ class PlantAddViewModel {
     func resetBirthDay() {
         self.birthDay.accept(nil)
     }
-    
-    func configure(view: PlantAddView) {
-        
-    }
 }

@@ -18,7 +18,7 @@ class PlantAddViewController: UIViewController {
     }()
     
     lazy var saveButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
+        let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onClickSave(_:)))
         return button
     }()
     
@@ -102,17 +102,23 @@ class PlantAddViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func onClickSave(_ sender: UIButton) {
+        if let image = self.plantAddView.imageView.image, let data = image.pngData() {
+            
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+                do {
+                    let fileName = "\(Int(Date.timeIntervalSinceReferenceDate)).png"
+                    let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName)
+                    try data.write(to: url, options: .atomic)
+                } catch (let error) {
+                    print("save error - \(error)")
+                }
+            } else {
+                // @TODO: 권한 요청
+            }
+        }
     }
-    */
-
 }
 
 extension PlantAddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
