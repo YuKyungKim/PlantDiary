@@ -55,16 +55,35 @@ class PlantAddView: UIView {
         return view
     }()
     
-    lazy var birthLabel: UILabel = {
+    lazy var birthTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "생일"
+        label.text = "식재일"
         return label
     }()
     
-    lazy var birthTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
-        return textField
+    lazy var birthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "없음"
+        return label
+    }()
+    
+    lazy var birthResetButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("삭제", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 8
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        return button
+    }()
+    
+    lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+        return datePicker
     }()
     
     override init(frame: CGRect) {
@@ -102,7 +121,7 @@ class PlantAddView: UIView {
         self.nameView.addSubview(self.nameLabel)
         self.nameLabel.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(self.nameView)
-            make.width.equalTo(48)
+            make.width.equalTo(80)
         }
         
         self.nameView.addSubview(self.nameTextField)
@@ -120,18 +139,44 @@ class PlantAddView: UIView {
             make.height.equalTo(30)
         }
         
-        self.birthView.addSubview(self.birthLabel)
-        self.birthLabel.snp.makeConstraints { (make) in
+        self.birthView.addSubview(self.birthTitleLabel)
+        self.birthTitleLabel.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(self.birthView)
-            make.width.equalTo(48)
+            make.width.equalTo(80)
         }
         
-        self.birthView.addSubview(self.birthTextField)
-        self.birthTextField.snp.makeConstraints { (make) in
-            make.left.equalTo(self.birthLabel.snp.right).offset(8)
+        self.birthView.addSubview(self.birthLabel)
+        self.birthLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.birthTitleLabel.snp.right).offset(8)
             make.top.bottom.equalTo(self.birthView)
-            make.right.equalTo(self.birthView.snp.right)
         }
+        
+        self.birthView.addSubview(self.birthResetButton)
+        self.birthResetButton.snp.makeConstraints { (make) in
+            make.width.equalTo(60)
+            make.left.equalTo(self.birthLabel.snp.right)
+            make.right.equalTo(self.birthView)
+            make.height.equalTo(30)
+            make.centerY.equalTo(self.birthView)
+        }
+        
+        self.addSubview(self.datePicker)
+        self.datePicker.snp.makeConstraints { (make) in
+            make.top.equalTo(self.birthView.snp.bottom).offset(8)
+            make.left.right.equalTo(self)
+        }
+    }
+    
+    @objc private func handleDatePicker(_ sender: UIDatePicker) {
+        let date = sender.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale(identifier: "ko-KR")
+        self.birthLabel.text = dateFormatter.string(from: date)
+    }
+    
+    func resetBirth() {
+        self.birthLabel.text = "없음"
     }
     
     required init?(coder: NSCoder) {

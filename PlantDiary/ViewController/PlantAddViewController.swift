@@ -22,11 +22,9 @@ class PlantAddViewController: UIViewController {
         return button
     }()
     
-    var name = BehaviorRelay<String>(value: "")
-    var birthDay = BehaviorRelay<Date?>(value: nil)
-    var imageUrl = BehaviorRelay<String>(value: "")
-    
     let disposeBag = DisposeBag()
+    
+    let viewModel = PlantAddViewModel()
     
     override func loadView() {
         super.loadView()
@@ -48,6 +46,17 @@ class PlantAddViewController: UIViewController {
     }
     
     func rxBind() {
+        
+        self.plantAddView.nameTextField.rx.text.subscribe { (name) in
+            self.viewModel.name.accept(name)
+        }
+        .disposed(by: disposeBag)
+
+        self.viewModel.isValidName.subscribe { (isValid) in
+            self.saveButton.isEnabled = isValid
+        }
+        .disposed(by: disposeBag)
+        
         self.plantAddView.imageButton.rx.tap
             .bind { _ in
                 let alert = UIAlertController(title: "이미지 선택", message: nil, preferredStyle: .actionSheet)
@@ -85,6 +94,13 @@ class PlantAddViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             .disposed(by: disposeBag)
+        
+        self.plantAddView.birthResetButton.rx.tap
+            .bind { _ in
+                self.viewModel.resetBirthDay()
+                self.plantAddView.resetBirth()
+            }
+            .disposed(by: disposeBag)
     }
 
     /*
@@ -106,7 +122,7 @@ extension PlantAddViewController: UIImagePickerControllerDelegate, UINavigationC
                 self.plantAddView.imageView.image = image
                 let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
                 let imageUrl = documentsPath + "/" + "\(Date.timeIntervalSinceReferenceDate)"
-                self.imageUrl.accept(imageUrl)
+                self.viewModel.imageUrl.accept(imageUrl)
             }
         }
     }

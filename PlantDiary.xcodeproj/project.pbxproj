@@ -18,6 +18,7 @@
 		BD7DB8422726DC7E007C8624 /* PlantsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */; };
 		BD7DB8462726E84C007C8624 /* PlantAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB8452726E84C007C8624 /* PlantAddViewController.swift */; };
 		BD7DB84E27283555007C8624 /* PlantAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB84D27283555007C8624 /* PlantAddView.swift */; };
+		BD7DB851272843D9007C8624 /* PlantAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DB850272843D9007C8624 /* PlantAddViewModel.swift */; };
 		BF7387CCC555CC785444D620 /* Pods_PlantDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1AEA4AC30FC59F97D287D42 /* Pods_PlantDiary.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCollectionViewModel.swift; sourceTree = "<group>"; };
 		BD7DB8452726E84C007C8624 /* PlantAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAddViewController.swift; sourceTree = "<group>"; };
 		BD7DB84D27283555007C8624 /* PlantAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAddView.swift; sourceTree = "<group>"; };
+		BD7DB850272843D9007C8624 /* PlantAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAddViewModel.swift; sourceTree = "<group>"; };
 		C0CBCA30209E465DADB77A03 /* Pods-PlantDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantDiary.release.xcconfig"; path = "Target Support Files/Pods-PlantDiary/Pods-PlantDiary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				BD7DB8412726DC7E007C8624 /* PlantsCollectionViewModel.swift */,
+				BD7DB850272843D9007C8624 /* PlantAddViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				BD7DB81027267088007C8624 /* AppDelegate.swift in Sources */,
 				BD7DB81227267088007C8624 /* SceneDelegate.swift in Sources */,
 				BD7DB8422726DC7E007C8624 /* PlantsCollectionViewModel.swift in Sources */,
+				BD7DB851272843D9007C8624 /* PlantAddViewModel.swift in Sources */,
 				BD7DB8462726E84C007C8624 /* PlantAddViewController.swift in Sources */,
 				BD7DB83F2726A56E007C8624 /* Plant.swift in Sources */,
 				BD7DB83C27269F33007C8624 /* PlantsCollectionViewCell.swift in Sources */,
@@ -336,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -391,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
